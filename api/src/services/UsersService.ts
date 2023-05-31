@@ -3,7 +3,7 @@ import { ICreate, IUpdate } from "../interfaces/UsersInterface";
 import { UsersRepository } from "../repositories/UsersRepository";
 import { s3 } from "../config/aws";
 import { v4 as uuid } from 'uuid';
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 
 class UsersService {
     private usersRepository: UsersRepository;
@@ -87,16 +87,47 @@ class UsersService {
 
         const token = sign({ email }, secretKey, {
             subject: findUser.id,
-            expiresIn: 60 * 15,
+            expiresIn: 60 * 15, // Poderia ser 15m
+        });
+
+        const refreshToken = sign({ email }, secretKey, {
+            subject: findUser.id,
+            expiresIn: '7d', // 7 dias
         });
 
         return {
             token,
+            refresh_token: refreshToken,
             user: {
                 name: findUser.name,
                 email: findUser.email,
             },
         }
+    }
+
+
+    async refresh(refresh_token: string) {
+
+        if (!refresh_token) {
+            throw new Error('Refresh token missing!');
+        }
+
+        let secretKey: string | undefined = process.env.ACCESS_WEB_TOKEN_KEY;
+
+        if (!secretKey) {
+            throw new Error('There is no refresh token key!');
+        }
+
+        const verifyRefreshToken = verify(refresh_token, secretKey);
+
+        const { sub } = verifyRefreshToken;
+
+
+        const newToken = sign({ sub }, secretKey, {
+            expiresIn: 60 * 15, // Poderia ser 15m
+        });
+
+        return { token: newToken };
     }
 
 }

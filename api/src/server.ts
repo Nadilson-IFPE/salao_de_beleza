@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import { UserRoutes } from "./routes/users.routes";
 import cors from "cors";
+import { SchedulesRoutes } from "./routes/schedules.routes";
 
 
 const app: Application = express();
@@ -12,8 +13,10 @@ app.use(cors({
 }));
 
 const userRoutes = new UserRoutes().getRoutes();
+const schedulesRoutes = new SchedulesRoutes().getRoutes();
 
 app.use('/users', userRoutes);
+app.use('/schedules', schedulesRoutes);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {
@@ -26,8 +29,8 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     })
 })
 
-
-app.listen(3000, () => console.log('Server is running'));
+const port = 3000;
+app.listen(port, () => console.log(`STATUS: Server is running at port ${port}.`));
 
 
 

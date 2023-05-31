@@ -11,7 +11,7 @@ CREATE TABLE "Users" (
 CREATE TABLE "Schedule" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "phoe" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
     "date" DATETIME NOT NULL
 );
 

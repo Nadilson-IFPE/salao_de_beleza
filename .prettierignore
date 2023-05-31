@@ -1,0 +1,16 @@
+# Prevent slow down on formatOnSave()
+# https://github.com/prettier/prettier-vscode/issues/1333
+node_modules
+**/.next/**
+**/_next/**
+**/dist/**
+**/__tmp__/**
+.github
+.git
+**/emulators.backup/**
+ui-debug.log
+**/functions/**
+.next
+**/functions/node_modules/**
+functions
+functions/node_modules
