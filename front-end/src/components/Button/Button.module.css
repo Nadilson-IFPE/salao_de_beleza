@@ -1,0 +1,13 @@
+.button {
+    width: 100%;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    color: var(--white);
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+
+.button span {
+    font-size: 1rem;
+}
