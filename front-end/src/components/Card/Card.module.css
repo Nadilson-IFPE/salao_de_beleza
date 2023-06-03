@@ -1,0 +1,41 @@
+.background {
+  display: flex;
+  background-color: var(--white);
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.background > div {
+  display: flex;
+  align-items: center;
+}
+
+.background > div > p {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.background > div > span {
+  background-color: var(--secondary);
+  color: var(--white);
+  border-radius: 8px 0 0 8px;
+  padding: 0.8rem;
+  margin-right: 1rem;
+}
+
+.disabled {
+  background-color: var(--gray-200) !important;
+}
+
+.icons {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.icons svg {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}

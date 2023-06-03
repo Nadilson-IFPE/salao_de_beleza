@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsKey } from 'react-icons/bs';
 import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/auth';
 
 interface IFormValues {
     email: string;
@@ -15,6 +16,8 @@ interface IFormValues {
 }
 
 export function Login() {
+    const { signIn } = useAuth();
+
     const schema = yup.object().shape({
         email: yup.string().email('Digite um e-mail válido!').required('Campo de e-mail obrigatório!'),
         password: yup.string().required('Campo de senha obrigatório!'),
@@ -22,9 +25,14 @@ export function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm<IFormValues>({ resolver: yupResolver(schema) });
 
-    const submit = handleSubmit((data) => {
-        console.log('Submit data', data);
-    })
+    const submit = handleSubmit(({ email, password }) => {
+        try {
+            signIn({ email, password, });
+        } catch (error) {
+//
+        }
+    });
+
     return (
         <div className={style.background}>
             <div className={`container ${style.container}`}>
