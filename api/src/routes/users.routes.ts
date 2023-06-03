@@ -14,7 +14,7 @@ class UserRoutes {
         this.authMiddleware = new AuthMiddleware();
     }
 
-    getRoutes() {
+    getRoutes(): Router {
         this.router.post(
             '/',
             this.usersController.store.bind(this.usersController),);

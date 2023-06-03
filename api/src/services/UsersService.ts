@@ -62,7 +62,7 @@ class UsersService {
             await this.usersRepository.update(name, uploadS3.Location, user_id);
         }
         return {
-            message: 'Userupdated successfully!',
+            message: 'User updated successfully!',
         };
     }
 
