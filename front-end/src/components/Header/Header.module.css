@@ -26,6 +26,11 @@
   cursor: pointer;
 }
 
+.dropdownMenu a {
+  color: var(--white);
+  text-decoration: none;
+}
+
 .dropdown {
   position: relative;
   display: flex;
@@ -33,7 +38,7 @@
 }
 
 .dropdownMenu.open {
-    opacity: 1;
+  opacity: 1;
 }
 
 .dropdownMenu {
@@ -49,10 +54,10 @@
 }
 
 .dropdownMenuItem {
-  padding: 0.7rem 1rem;  
+  padding: 0.7rem 1rem;
 }
 
 .dropdownMenuItem:hover {
-    background-color: #64A2A4;
-    border-radius: 8px;
+  background-color: #64a2a4;
+  border-radius: 8px;
 }

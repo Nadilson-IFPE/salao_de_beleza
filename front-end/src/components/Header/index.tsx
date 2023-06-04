@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo_branca.png';
 import style from './Header.module.css';
 import { CgProfile } from 'react-icons/cg';
@@ -21,8 +21,12 @@ export const Header = () => {
                     <CgProfile size={18} />
                     <span>Perfil</span>
                     <ul className={`${style.dropdownMenu} ${open && style.open}`}>
-                        <li className={style.dropdownMenuItem}>Agendamentos</li>
-                        <li className={style.dropdownMenuItem}>Editar Perfil</li>
+                        <Link to={'/schedules'}>
+                            <li className={style.dropdownMenuItem}>Agendamentos</li>
+                        </Link>
+                        <Link to={'/edit-profile'}>
+                            <li className={style.dropdownMenuItem}>Editar Perfil</li>
+                        </Link>
                         <li className={style.dropdownMenuItem} onClick={signOut}>Sair</li>
                     </ul>
                 </div>
